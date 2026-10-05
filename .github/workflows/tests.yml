@@ -1,0 +1,24 @@
+name: Tests Python
+
+on:
+    push:
+        pull_request:
+
+            jobs:
+                test:
+                    runs-on: ubuntu-latest
+                    steps:
+                        - name: Récuperer le code
+                        uses: actions/checkout@v4
+
+                        -name: Installer Python
+                        uses: actions/setupe-python@v5
+                        with: 
+                            python-version:"3.11"
+
+                        name: Installer les dépendances
+                        run: pip install -r requirements.txt
+                        
+                        -name: Lancer les tests
+                        run: pytest
+                    
